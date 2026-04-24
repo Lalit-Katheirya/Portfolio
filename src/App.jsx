@@ -1,16 +1,26 @@
-import { useState } from 'react'
-import './App.scss'
+import React from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-
-      <h1>Lalit katheriya - PortFolio</h1>
-  
-    </>
-  )
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
