@@ -11,7 +11,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile.api
+      dockerfile: dockerfile.api
     container_name: portfolio-api
     restart: unless-stopped
     environment:
@@ -27,7 +27,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.web
+      dockerfile: dockerfile.web
     container_name: portfolio-web
     restart: unless-stopped
     depends_on:
