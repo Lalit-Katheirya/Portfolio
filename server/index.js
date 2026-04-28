@@ -1,16 +1,17 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 import { connectDatabase } from "./config/db.js";
 import { Portfolio } from "./models/Portfolio.js";
 import { Message } from "./models/Message.js";
-import { portfolioSeed } from "./data/seedPortfolio.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 5000;
-let isDbConnected = false;
-let memoryPortfolio = structuredClone(portfolioSeed);
-const memoryMessages = [];
 
 app.use(
   cors({
@@ -19,16 +20,17 @@ app.use(
 );
 app.use(express.json());
 
+// Serve frontend build from server/dist (same port as API)
+// Build output should be placed at: server/dist
+const distPath = path.resolve(__dirname, "./dist");
+app.use(express.static(distPath));
+
 app.get("/api/health", (_req, res) => {
   res.json({ success: true, message: "API is healthy" });
 });
 
 app.get("/api/portfolio", async (_req, res) => {
   try {
-    if (!isDbConnected) {
-      return res.json({ success: true, data: memoryPortfolio });
-    }
-
     const portfolio = await Portfolio.findOne().lean();
     if (!portfolio) {
       return res
@@ -56,17 +58,7 @@ app.post("/api/messages", async (req, res) => {
       });
     }
 
-    if (isDbConnected) {
-      await Message.create({ name, email, subject, message });
-    } else {
-      memoryMessages.push({
-        name,
-        email,
-        subject,
-        message,
-        createdAt: new Date().toISOString(),
-      });
-    }
+    await Message.create({ name, email, subject, message });
     return res.status(201).json({
       success: true,
       message: "Message submitted successfully.",
@@ -80,35 +72,17 @@ app.post("/api/messages", async (req, res) => {
   }
 });
 
-const bootstrap = async () => {
-  try {
-    await connectDatabase();
-    isDbConnected = true;
+// SPA fallback (avoid catching /api routes)
+app.get(/^\/(?!api).*/, (_req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
 
-    const existing = await Portfolio.countDocuments();
-    if (existing === 0) {
-      await Portfolio.create(portfolioSeed);
-      // eslint-disable-next-line no-console
-      console.log("Seeded portfolio content.");
-    }
-  } catch (error) {
-    isDbConnected = false;
-    memoryPortfolio = structuredClone(portfolioSeed);
-    // eslint-disable-next-line no-console
-    console.warn("MongoDB unavailable. Server started in memory mode.");
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Set MONGODB_URI in .env and run MongoDB to enable persistence."
-    );
-    // eslint-disable-next-line no-console
-    console.warn(error instanceof Error ? error.message : "Unknown DB error");
-  }
+const bootstrap = async () => {
+  await connectDatabase();
 
   app.listen(port, () => {
     // eslint-disable-next-line no-console
-    console.log(
-      `Server running on http://localhost:${port} (${isDbConnected ? "mongodb" : "memory mode"})`
-    );
+    console.log(`Server running on http://localhost:${port}`);
   });
 };
 

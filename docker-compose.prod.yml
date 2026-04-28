@@ -1,0 +1,35 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: portfolio-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    image: registry.gitlab.com/YOUR_USERNAME/YOUR_REPO/portfolio-api:latest
+    container_name: portfolio-api
+    restart: unless-stopped
+    environment:
+      PORT: "5000"
+      CLIENT_URL: "http://web:8080"
+      MONGODB_URI: "mongodb://mongo:27017"
+      MONGODB_DB_NAME: "PortfolioDB"
+    depends_on:
+      - mongo
+    ports:
+      - "5000:5000"
+
+  web:
+    image: registry.gitlab.com/YOUR_USERNAME/YOUR_REPO/portfolio-web:latest
+    container_name: portfolio-web
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "8080:8080"
+
+volumes:
+  mongo_data:
