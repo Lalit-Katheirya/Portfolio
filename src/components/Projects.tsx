@@ -142,8 +142,8 @@ const Projects = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              My <span className="gradient-text">Projects</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-heading">
+              My Projects
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               A showcase of my recent work and the technologies I use to solve
@@ -217,7 +217,7 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-gradient-heading transition-opacity group-hover:opacity-90">
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground mb-4 leading-relaxed">

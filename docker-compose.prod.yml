@@ -1,9 +1,4 @@
-vaiables:
- $CI_REGISTRY_USER:lalitkatheriya9941
- $CI_REGISTRY_PASSWORD:glpat-VpXrrhpU_l0ibNGm405qbGM6MQpvOjEKdTpmN3Bwdw8.01.170tdgc22
-
-
-
+version: "3.9"
 
 services:
   mongo:
@@ -16,7 +11,7 @@ services:
       - mongo_data:/data/db
 
   api:
-    image: registry.gitlab.com/$CI_REGISTRY_PASSWORD/$CI_REGISTRY_USER/portfolio-api:latest
+    image: registry.gitlab.com/lalitkatheriya9941/portfolio-api:latest
     container_name: portfolio-api
     restart: unless-stopped
     environment:
@@ -30,7 +25,7 @@ services:
       - "5000:5000"
 
   web:
-    image: registry.gitlab.com/$CI_REGISTRY_PASSWORD/$CI_REGISTRY_USER/portfolio-web:latest
+    image: registry.gitlab.com/lalitkatheriya9941/portfolio-web:latest
     container_name: portfolio-web
     restart: unless-stopped
     depends_on:

@@ -22,10 +22,8 @@ const Skills = () => {
     <section id="skills" className="py-24 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              My Skills
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient-heading">
+            My Skills
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We put your ideas and thus your wishes in the form of a unique web

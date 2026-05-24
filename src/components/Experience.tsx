@@ -64,10 +64,8 @@ const Experience = () => {
     <section id="experience" className="py-24 px-4 bg-secondary/30">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              My Experience
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient-heading">
+            My Experience
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A journey through my professional career and educational background.
@@ -81,7 +79,7 @@ const Experience = () => {
               <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
                 <Briefcase className="text-background" size={24} />
               </div>
-              <h3 className="text-2xl font-bold">My Experience</h3>
+              <h3 className="text-2xl font-bold text-gradient-heading">My Experience</h3>
             </div>
             {experiences.map((exp, index) => (
               <Card
@@ -115,7 +113,7 @@ const Experience = () => {
               <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
                 <GraduationCap className="text-background" size={24} />
               </div>
-              <h3 className="text-2xl font-bold">My Education</h3>
+              <h3 className="text-2xl font-bold text-gradient-heading">My Education</h3>
             </div>
             {education.map((edu, index) => (
               <Card

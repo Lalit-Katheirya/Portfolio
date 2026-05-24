@@ -34,10 +34,8 @@ const Contact = () => {
     <section id="contact" className="py-24 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Let's Work Together
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient-heading">
+            Let&apos;s Work Together
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind? Let's discuss how I can help bring your

@@ -2,12 +2,23 @@ export const portfolioSeed = {
   personal: {
     name: "Lalit Katheriya",
     title: "Full Stack Web Developer",
+    tagline:
+      "I build scalable web & hybrid apps with clean code and great user experiences.",
     summary:
       "Full Stack Web Developer with 4 years of experience in building scalable web and hybrid applications using Angular, React, Ionic, Node.js, and Firebase. Strong focus on performance optimization, clean architecture, and delivering user-friendly solutions.",
+    about: [
+      "Over the past four years, I've shipped production-ready products—from responsive dashboards and hybrid mobile apps to RESTful backends and Firebase-powered platforms. I work across the full stack with Angular, React, Ionic, Node.js, and modern cloud tooling.",
+      "I care deeply about performance, maintainable architecture, and interfaces that feel intuitive. Whether collaborating with a team or delivering freelance projects, I aim to turn complex requirements into reliable, user-friendly software.",
+    ],
     email: "Lalitkatheriya9941@gmail.com",
     phone: "+91-9179255860",
     location: "Ujjain, MP, 456001",
-    linkedin: "https://linkedin.com/in/lalitkatheriya369",
+    social: {
+      linkedin: "https://www.linkedin.com/in/lalitkatheriya369/",
+      github: "https://github.com/Lalit-Katheirya",
+      upwork:
+        "https://www.upwork.com/freelancers/~0187612674101e6384?mp_source=share",
+    },
   },
   skills: {
     frontend: [
@@ -80,8 +91,28 @@ export const portfolioSeed = {
         "Firebase",
       ],
     },
+    {
+      role: "Freelancer",
+      company: "Self-Employed",
+      period: "Jan 2025 - Present",
+      highlights: [
+        "Delivering freelance web and hybrid mobile projects for independent clients.",
+        "Building end-to-end solutions with Angular, React, Ionic, and Node.js.",
+        "Managing project timelines, client communication, and production deployments.",
+      ],
+      technologies: ["Angular", "React", "Node.js", "Ionic", "Firebase"],
+    },
   ],
   projects: [
+    {
+      title: "AutoFlow — Automation SaaS Dashboard",
+      period: "2025 - Present",
+      description: [
+        "Full-stack workflow automation dashboard with visual builder, executions, and templates.",
+        "React, Express, MongoDB, and Recharts — same stack as this portfolio.",
+      ],
+      technologies: ["React", "Node.js", "MongoDB", "Express", "Recharts"],
+    },
     {
       title: "Lotto Social UK Lottery (Hybrid App)",
       period: "Jul 2022 - Present",

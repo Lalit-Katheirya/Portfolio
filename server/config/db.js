@@ -5,7 +5,7 @@ export const connectDatabase = async () => {
 
   await mongoose.connect(uri, {
     dbName: process.env.MONGODB_DB_NAME || "PortfolioDB",
-    serverSelectionTimeoutMS: 5000,
-    connectTimeoutMS: 5000,
+    serverSelectionTimeoutMS: 3000,
+    connectTimeoutMS: 3000,
   });
 };

@@ -65,8 +65,8 @@ const About = () => {
                 >
                     {/* Section Header */}
                     <motion.div variants={itemVariants} className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            About <span className="gradient-text">Me</span>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-heading">
+                            About Me
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                             I'm a passionate developer with a love for creating digital experiences that make a difference.
@@ -123,7 +123,7 @@ const About = () => {
 
                         {/* Right Column - Services */}
                         <motion.div variants={itemVariants} className="space-y-6">
-                            <h3 className="text-2xl font-bold mb-8">What I Do</h3>
+                            <h3 className="text-2xl font-bold mb-8 text-gradient-heading">What I Do</h3>
                             {services.map((service, index) => (
                                 <motion.div
                                     key={index}

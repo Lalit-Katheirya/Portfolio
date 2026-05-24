@@ -116,12 +116,16 @@ export default {
         },
         "glow": {
           "0%, 100%": {
-            boxShadow: "0 0 20px hsl(189 94% 55% / 0.3)"
+            boxShadow: "0 0 20px hsl(239 84% 67% / 0.3)"
           },
           "50%": {
-            boxShadow: "0 0 40px hsl(189 94% 55% / 0.6)"
+            boxShadow: "0 0 40px hsl(239 84% 67% / 0.55)"
           }
-        }
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -130,10 +134,11 @@ export default {
         "fade-in-scale": "fade-in-scale 0.5s ease-out",
         "slide-in-right": "slide-in-right 0.6s ease-out",
         "glow": "glow 2s ease-in-out infinite",
+        marquee: "marquee 30s linear infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-primary': 'linear-gradient(135deg, hsl(189 94% 55%) 0%, hsl(197 92% 61%) 100%)',
+        'gradient-primary': 'linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(262 83% 58%) 100%)',
       },
     },
   },

@@ -41,7 +41,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <div className="text-2xl font-bold text-gradient-heading">
             Portfolio
           </div>
 

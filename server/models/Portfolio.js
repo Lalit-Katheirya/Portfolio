@@ -15,6 +15,7 @@ const SocialSchema = new Schema(
   {
     linkedin: { type: String },
     github: { type: String },
+    upwork: { type: String },
     twitter: { type: String },
     website: { type: String },
   },
@@ -25,7 +26,9 @@ const PersonalSchema = new Schema(
   {
     name: { type: String, required: true, trim: true },
     title: { type: String, required: true },
+    tagline: { type: String },
     summary: { type: String },
+    about: { type: [String], default: [] },
     email: { type: String, required: true, lowercase: true, trim: true },
     phone: { type: String },
     location: { type: LocationSchema },

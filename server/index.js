@@ -6,12 +6,17 @@ import { fileURLToPath } from "url";
 import { connectDatabase } from "./config/db.js";
 import { Portfolio } from "./models/Portfolio.js";
 import { Message } from "./models/Message.js";
+import {
+  fallbackPortfolio,
+  seedPortfolioIfEmpty,
+} from "./services/seedPortfolio.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 5000;
+let dbConnected = false;
 
 app.use(
   cors({
@@ -22,7 +27,8 @@ app.use(express.json());
 
 // Serve frontend build from server/dist (same port as API)
 // Build output should be placed at: server/dist
-const distPath = path.resolve(__dirname, "./dist");
+const distPath = path.resolve(__dirname, "./public/dist");
+console.log("distPath ", distPath)
 app.use(express.static(distPath));
 
 app.get("/api/health", (_req, res) => {
@@ -31,6 +37,10 @@ app.get("/api/health", (_req, res) => {
 
 app.get("/api/portfolio", async (_req, res) => {
   try {
+    if (!dbConnected) {
+      return res.json({ success: true, data: fallbackPortfolio });
+    }
+
     const portfolio = await Portfolio.findOne().lean();
     if (!portfolio) {
       return res
@@ -58,6 +68,14 @@ app.post("/api/messages", async (req, res) => {
       });
     }
 
+    if (!dbConnected) {
+      return res.status(503).json({
+        success: false,
+        message:
+          "Database is offline. Start MongoDB (docker compose up mongo -d) to save messages.",
+      });
+    }
+
     await Message.create({ name, email, subject, message });
     return res.status(201).json({
       success: true,
@@ -78,7 +96,21 @@ app.get(/^\/(?!api).*/, (_req, res) => {
 });
 
 const bootstrap = async () => {
-  await connectDatabase();
+  try {
+    await connectDatabase();
+    await seedPortfolioIfEmpty();
+    dbConnected = true;
+    // eslint-disable-next-line no-console
+    console.log("MongoDB connected.");
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "MongoDB unavailable — portfolio API will use seed data. Contact form needs MongoDB.",
+      error instanceof Error ? error.message : error
+    );
+    // eslint-disable-next-line no-console
+    console.warn("Start MongoDB: docker compose up mongo -d");
+  }
 
   app.listen(port, () => {
     // eslint-disable-next-line no-console

@@ -40,10 +40,8 @@ const Services = () => {
     <section id="services" className="py-24 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              My Quality Services
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient-heading">
+            My Quality Services
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We put your ideas and thus your wishes in the form of a unique web
@@ -69,7 +67,7 @@ const Services = () => {
                       <service.icon className="text-white" size={32} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-2xl font-bold mb-2 text-gradient-heading transition-opacity group-hover:opacity-90">
                         {service.title}
                       </h3>
                       <p

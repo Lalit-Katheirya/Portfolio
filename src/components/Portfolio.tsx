@@ -51,10 +51,8 @@ const Portfolio = () => {
     <section id="portfolio" className="py-24 px-4 bg-secondary/30">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              My Recent Works
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient-heading">
+            My Recent Works
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills and
@@ -96,7 +94,7 @@ const Portfolio = () => {
                 <div className="text-primary text-sm font-semibold mb-2">
                   {project.category}
                 </div>
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold mb-2 text-gradient-heading transition-opacity group-hover:opacity-90">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground mb-4">

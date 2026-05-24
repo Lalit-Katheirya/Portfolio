@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col items-center space-y-6">
           {/* Logo */}
-          <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <div className="text-2xl font-bold text-gradient-heading">
             Portfolio
           </div>
 
