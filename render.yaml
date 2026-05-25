@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: portfolio
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build && mkdir -p server/public/dist && rm -rf server/public/dist/* && cp -r dist/* server/public/dist/
+    startCommand: npm run server
+    envVars:
+      - key: NODE_ENV
+        value: production
