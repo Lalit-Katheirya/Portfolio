@@ -3,8 +3,8 @@ services:
     name: portfolio
     env: node
     plan: free
-    buildCommand: npm install && npm run build && mkdir -p server/public/dist && rm -rf server/public/dist/* && cp -r dist/* server/public/dist/
-    startCommand: npm run server
+    buildCommand: npm install --include=dev && npm run build && mkdir -p server/public/dist && cp -r dist/* server/public/dist/
+    startCommand: npm run dev
     envVars:
       - key: NODE_ENV
         value: production
